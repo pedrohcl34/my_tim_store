@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MyTimStore</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  
+  <meta charset="utf-8">
+  <title>My Tim Store</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  
+  <%= stylesheet_link_tag    'normalize', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'skeleton',  media:  'all', 'data-turbolinks-track'=>  true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <form>
+      <div class="row">
+        <div class="four columns">
+          <label for="productSearch">Search Product</label>
+          <input class="u-full-width" type="text" placeholder="Product" id="productSearch">
+          <input class="button-primary" type="submit" value="Search Product">
+        </div>
+        <div class="four columns">
+          
+          <label for="categories">Filtered by category</label>
+          <select class="u-full-width" id="categories">
+            <% @categories.each do |category| %>
+            <option value="<%=category.id%>"><%=category.name%></option>
+            <% end %>
+          </select>
+          
+        </div>
+        <div class="four columns">
+          <%= link_to 'Admin area' , 'admin' %>
+        </div>
+      </div>
+    </form>
+    <%= yield %>
+  </div>
 
-<%= yield %>
 
 </body>
 </html>
