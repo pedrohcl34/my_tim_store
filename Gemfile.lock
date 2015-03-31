@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: e5ce49a62751a4a69c3f84058d398ce0fb78eb76
+  revision: 71b94c9326bb29749c48a0f90f43d8914e80335f
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -182,6 +182,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_magick
   rails (= 4.1.8)
   sass-rails (~> 4.0.3)
