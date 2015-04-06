@@ -14,10 +14,20 @@
   
   <%= stylesheet_link_tag    'normalize', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'skeleton',  media:  'all', 'data-turbolinks-track'=>  true %>
+  <%= stylesheet_link_tag    'adipoli',  media:  'all', 'data-turbolinks-track'=>  true %>
+  <%= stylesheet_link_tag    'styles-modified',  media:  'all', 'data-turbolinks-track'=>  true %>
+  <%= javascript_include_tag 'jquery-1.11.1', 'data-turbolinks-track'=> true %>
+  <%= javascript_include_tag 'jquery.adipoli.min', 'data-turbolinks-track'=> true %>
+  <%= javascript_include_tag 'jssor', 'data-turbolinks-track'=> true %>
+  <%= javascript_include_tag 'jssor.slider.min', 'data-turbolinks-track'=> true %>
+  <%= javascript_include_tag 'jquery-1.9.1.min', 'data-turbolinks-track'=> true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+
+
   <div class="container">
     <form>
       <div class="row">
@@ -42,8 +52,18 @@
       </div>
     </form>
     <%= yield %>
+    <script type="text/javascript">
+    //image
+         $(function(){
+                $('.row1').adipoli({
+                    'startEffect' : 'normal',
+                    'hoverEffect' : 'popout'
+                });
+            });
+    </script>
   </div>
 
 
 </body>
+    
 </html>
