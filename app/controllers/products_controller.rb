@@ -3,10 +3,11 @@ class ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
+ 
   def index
-    #@products = Product.all
-    @products = Product.order("name").page(params[:page]).per(5)
-    @categories = Category.all
+     @categories = Category.all
+    @products = Product.all.sample(5)
+    
   end
 
   # GET /products/1
@@ -25,7 +26,23 @@ class ProductsController < ApplicationController
   end
 
   def search
+     @categories = Category.all
+  end
+  def search_results
+    @categories = Category.all
+    keyword = "%#{params[:productSearch]}%"
+    category = params[:searchCategories]
+    if category == 'All'
+      @found_products = Product.where("name LIKE ? OR description LIKE ?", keyword, keyword).page(params[:page]).per(5)
+    else
+      found_category = Category.where(id: category)
+      
+      @found_products = Product.where(category: found_category).where("name LIKE ? OR description LIKE ?", keyword, keyword).page(params[:page]).per(5)
+        
+    end
     
+    
+    #@found_products = Product.order("name").page(params[:page]).per(5)
   end
   # POST /products
   # POST /products.json

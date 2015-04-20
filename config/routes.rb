@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :products
   resources :categories
-  post 'products' => 'products#search'
+  get 'search' => 'products#search', as: 'search'
+  get 'search_results' => 'products#search_results', as: 'search_results'
   root 'products#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

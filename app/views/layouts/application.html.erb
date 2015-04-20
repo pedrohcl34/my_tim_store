@@ -29,17 +29,18 @@
 
 
   <div class="container">
-    <form>
+    <%=form_tag search_results_path, method: 'get' do %>
       <div class="row">
         <div class="four columns">
           <label for="productSearch">Search Product</label>
-          <input class="u-full-width" type="text" placeholder="Product" id="productSearch">
+          <input class="u-full-width" type="text" placeholder="Product" id="productSearch" name="productSearch">
           <input class="button-primary" type="submit" value="Search Product">
         </div>
         <div class="four columns">
           
-          <label for="categories">Filtered by category</label>
-          <select class="u-full-width" id="categories">
+          <label for="searchCategories">Filtered by category</label>
+          <select class="u-full-width" id="searchCategories" name="searchCategories">
+            <option value="All">All</option>
             <% @categories.each do |category| %>
             <option value="<%=category.id%>"><%=category.name%></option>
             <% end %>
@@ -50,7 +51,7 @@
           <%= link_to 'Admin area' , admin_user_session_path %>
         </div>
       </div>
-    </form>
+    <% end %>
     <%= yield %>
     <script type="text/javascript">
     //image
